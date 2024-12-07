@@ -1,15 +1,29 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  config:
+    import: "optional:configserver:"
+  cloud:
+    config:
+      uri: http://localhost:8888
+      fail-fast: true
+    gateway:
+      discovery:
+        locator:
+          enabled: true # Включаем автоматическое обнаружение сервисов через Eureka
+          lower-case-service-id: true # Сервисные идентификаторы в нижнем регистре
+      routes:
+        - id: user-service
+          uri: lb://USER-SERVICE
+          predicates:
+            - Path=/user-service/** # Обрабатывает запросы с префиксом /user-service
+          filters:
+            - StripPrefix=1 # Убирает префикс "/user-service" перед пересылкой на микросервис
+
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
-spring:
-  cloud:
-    gateway:
-      discovery:
-        locator:
-          enabled: true
-          lower-case-service-id: true
-
-server:
-  port: 8080
