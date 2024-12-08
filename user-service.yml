@@ -1,21 +1,37 @@
+server:
+  port: 8885
 spring:
+#  application:
+#    name: user-service
+#  cloud:
+#    config:
+#      uri: http://localhost:8888
+#      fail-fast: true
+#  config:
+#    import: "optional:configserver:"
   datasource:
     url: jdbc:postgresql://localhost:5432/userdb
     username: postgres
     password: postgres
-    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
+
+  security:
+    oauth2:
+      client:
+        registration:
+          github:
+            client-id: Ov23liBrnhOnwu6hBnIP
+            client-secret: 68d9c8bc706e9bf658895b856f8e8621081dfcd3
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka/
-
-server:
-  port: 8885
-
-# Дополнительно можно настроить логирование, кэширование и т.д.
+  instance:
+    hostname: host.docker.internal
+    prefer-ip-address: false
 
