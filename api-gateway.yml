@@ -23,6 +23,7 @@ spring:
           uri: http://user-service.default.svc.cluster.local:8080
           predicates:
             - Path=/user-service/**
+            - Path=/user/**          # Добавьте этот путь, если необходимо
           filters:
             - RewritePath=/user-service/(?<path>.*), /${path}
         - id: oauth2-service
