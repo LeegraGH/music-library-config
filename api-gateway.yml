@@ -29,6 +29,10 @@ spring:
           uri: http://user-service.default.svc.cluster.local:8080
           predicates:
             - Path=/oauth2/**
+        - id: oauth2-redirect
+          uri: http://user-service.default.svc.cluster.local:8080
+          predicates:
+            - Path=/login/oauth2/code/**
         - id: order-service
           uri: http://order-service.default.svc.cluster.local:8080
           predicates:
