@@ -1,5 +1,5 @@
 server:
-  port: 8885
+  port: 8080
 spring:
 #  application:
 #    name: user-service
@@ -32,6 +32,6 @@ eureka:
     service-url:
       defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE}
   instance:
-    hostname: host.docker.internal
-    prefer-ip-address: false
+    non-secure-port: 8080
+    prefer-ip-address: true
 
