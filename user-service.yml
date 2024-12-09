@@ -26,7 +26,7 @@ spring:
           github:
             client-id: Ov23liBrnhOnwu6hBnIP
             client-secret: 68d9c8bc706e9bf658895b856f8e8621081dfcd3
-            redirect-uri: "localhost:8080/login/oauth2/code/github"
+            redirect-uri: "http://localhost:8080/login/oauth2/code/github"
         provider:
           github:
             authorization-uri: https://github.com/login/oauth/authorize
