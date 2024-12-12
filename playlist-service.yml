@@ -3,7 +3,7 @@ server:
 
 spring:
 #  application:
-#    name: order-service
+#    name: playlist-service
 #  cloud:
 #    config:
 #      uri: http://localhost:8888
